@@ -1,0 +1,40 @@
+# ----------------------------------------------------
+# EasyReport Configuration
+# ----------------------------------------------------
+
+# Paste your Discord Webhook URL here.
+discord-webhook-url: "WEBHOOK_URL_HERE"
+
+# List of reasons players can select in the GUI.
+report-reasons:
+  - "Hacking"
+  - "Death Threats"
+  - "Griefing"
+  - "Spamming"
+  - "Inappropriate Language"
+  - "Teaming"
+  - "Other"
+
+# ----------------------------------------------------
+# Customization
+# ----------------------------------------------------
+
+staff-alerts:
+  enabled: true
+  # The message to send. Color codes with '&' are supported.
+  # Placeholders: %reporter%, %reported%, %reason%
+  message: "&c[Alert] &f%reporter% &7reported &f%reported% &7for: &e%reason%"
+
+webhook-settings:
+  username: ""
+  avatar-url: ""
+
+embed-settings:
+  color: 5763719
+  reporter-field-name: "REPORTER:"
+  reported-player-field-name: "REPORTED PLAYER:"
+  reason-field-name: "REASON:"
+  proof-field-name: "PROOF:"
+  date-field-name: ":DATE:"
+
+  footer-text: "Report from the %server% server"
