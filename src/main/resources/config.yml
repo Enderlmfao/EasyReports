@@ -1,40 +1,78 @@
-# ----------------------------------------------------
-# EasyReport Configuration
-# ----------------------------------------------------
+# ------------------------------------------------------------------
+# EasyReport v1.2 Configuration
+# ------------------------------------------------------------------
 
-# Paste your Discord Webhook URL here.
-discord-webhook-url: "WEBHOOK_URL_HERE"
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Discord Integration Settings
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+discord-webhook:
+  url: "WEBHOOK_URL_HERE"
+  username: "Server Reports"
+  avatar-url: "https://i.imgur.com/tS3zZ1B.png"
+  embed:
+    color: 16734296
+    title: "New Player Report"
+    reporter-field-name: "Reported By"
+    reported-player-field-name: "Reported Player"
+    reason-field-name: "Reason"
+    proof-field-name: "Proof"
 
-# List of reasons players can select in the GUI.
-report-reasons:
-  - "Hacking"
-  - "Death Threats"
-  - "Griefing"
-  - "Spamming"
-  - "Inappropriate Language"
-  - "Teaming"
-  - "Other"
-
-# ----------------------------------------------------
-# Customization
-# ----------------------------------------------------
-
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# In-Game Staff Alerts
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 staff-alerts:
   enabled: true
-  # The message to send. Color codes with '&' are supported.
-  # Placeholders: %reporter%, %reported%, %reason%
   message: "&c[Alert] &f%reporter% &7reported &f%reported% &7for: &e%reason%"
 
-webhook-settings:
-  username: ""
-  avatar-url: ""
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Report Reasons
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+report-reasons:
+  - "Hacking / Unfair Advantage"
+  - "Spamming or Flooding Chat"
+  - "Griefing or Stealing"
+  - "Threats or Harassment"
+  - "Inappropriate Language"
+  - "Teaming in Solo Gamemodes"
+  - "Other"
 
-embed-settings:
-  color: 5763719
-  reporter-field-name: "REPORTER:"
-  reported-player-field-name: "REPORTED PLAYER:"
-  reason-field-name: "REASON:"
-  proof-field-name: "PROOF:"
-  date-field-name: ":DATE:"
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# GUI Customization
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+gui-settings:
+  reasons-menu-title: "&1Reporting: &9%player%"
+  reason-item-material: "PAPER"
+  reason-item-name: "&e%reason%"
+  reports-list-title: "&4&lActive Reports"
+  report-item-name: "&eReport for: &f%player%"
+  report-item-lore:
+    - "&8&m----------------------------"
+    - "&7Reported By: &b%reporter%"
+    - "&7Reason: &f%reason%"
+    - "&7Proof: &f%proof%"
+    - ""
+    - "&aLeft-Click to Teleport"
+    - "&cRight-Click to Delete Report"
+    - "&8&m----------------------------"
+    - "&7%date%"
+  no-reports-item-material: "BARRIER"
+  no-reports-item-name: "&cNo Active Reports"
+  no-reports-item-lore:
+    - "&7It looks like the server is clean!"
 
-  footer-text: "Report from the %server% server"
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# General Messages
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+messages:
+  must-be-player: "&cThis command can only be run by a player."
+  config-reloaded: "&aEasyReport configuration has been successfully reloaded."
+  unknown-command: "&cUnknown command. Use /easyreport help for assistance."
+  report-usage: "&cUsage: /report <player>"
+  already-reporting: "&cYou are already in the process of filing a report."
+  player-not-found: "&cPlayer '%player%' has never played on this server."
+  cannot-report-self: "&cYou cannot report yourself."
+  report-submitted: "&aThank you, your report has been submitted for review."
+  prompt-for-custom-reason: "&6Please type your custom reason in chat now."
+  prompt-for-proof: "&6Please provide proof (e.g., a link) in chat."
+  prompt-no-proof-option: "&6Type &e'none' &6if you have no proof to provide."
+  reason-set: "&aReason set to: &f%reason%"
