@@ -1,0 +1,52 @@
+# ------------------------------------------------------------------
+# EasyReport Offenses Configuration
+#
+# This file allows you to configure the report reasons and the
+# commands executed for each punishment type.
+# ------------------------------------------------------------------
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Report Reasons
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# These are the reasons players can choose from (or type) when reporting.
+report-reasons:
+  - "Hacking / Unfair Advantage"
+  - "Spamming or Flooding Chat"
+  - "Griefing or Stealing"
+  - "Threats or Harassment"
+  - "Inappropriate Language"
+  - "Teaming in Solo Gamemodes"
+  - "Other"
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Punishment Commands
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Configure the commands executed for each punishment type.
+# Placeholders:
+# %player% - The player being punished
+# %reason% - The reason for the punishment
+# %duration% - The duration of the punishment (for mute/ban)
+# %offense% - The offense number (1, 2, 3, etc.)
+
+punishments:
+  warn:
+    command: "warn %player% %reason% (Offense #%offense%)"
+
+  kick:
+    command: "kick %player% %reason%"
+
+  mute:
+    command: "mute %player% %duration% %reason% (Offense #%offense%)"
+    durations:
+      1: "1h"
+      2: "6h"
+      3: "1d"
+      default: "7d"
+
+  ban:
+    command: "ban %player% %duration% %reason% (Offense #%offense%)"
+    durations:
+      1: "1d"
+      2: "7d"
+      3: "30d"
+      default: "permanent"

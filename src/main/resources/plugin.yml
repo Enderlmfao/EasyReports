@@ -1,0 +1,68 @@
+name: EasyReport
+version: '2.0'
+main: com.ender.easyReport.EasyReport
+api-version: '1.16'
+authors: [3liys]
+description: A simple & effective way to handle player reports.
+website: https://github.com/Enderlmfao/EasyReports
+
+commands:
+  report:
+    description: Report a player for violating server rules.
+    usage: "/report <player> <reason>"
+    permission: easyreport.report
+  reports:
+    description: View and manage active player reports.
+    usage: "/reports <list|clear|teleport|info> [id]"
+    permission: easyreport.staff
+  easyreport:
+    description: Manages the EasyReport plugin.
+    usage: "/easyreport <reload|help|version>"
+    aliases: [er, reportadmin]
+    permission: easyreport.admin
+
+permissions:
+  easyreport.*:
+    description: Gives access to all EasyReport commands and features.
+    children:
+      easyreport.admin: true
+      easyreport.staff: true
+      easyreport.report: true
+
+  easyreport.admin:
+    description: Gives access to all administrative commands.
+    default: op
+    children:
+      easyreport.reload: true
+      easyreport.version: true
+
+  easyreport.staff:
+    description: Gives access to all staff commands.
+    default: op
+    children:
+      easyreport.reports.*: true
+      easyreport.alerts: true
+
+  easyreport.reports.*:
+    children:
+      easyreport.reports.list: true
+      easyreport.reports.info: true
+      easyreport.reports.teleport: true
+      easyreport.reports.clear: true
+
+  easyreport.report:
+    description: Allows players to use /report.
+    default: true
+
+  easyreport.notify:
+    description: Allows players to receive report status notifications.
+    default: true
+
+  easyreport.reload:
+    default: op
+
+  easyreport.version:
+    default: op
+
+  easyreport.alerts:
+    default: op

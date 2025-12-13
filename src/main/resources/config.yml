@@ -1,0 +1,112 @@
+# ------------------------------------------------------------------
+# EasyReport v2.0 Configuration
+#
+# Thank you for using EasyReport! This file allows for deep
+# customization of the plugin's features and appearance.
+# For help, please refer to the plugin's documentation.
+#
+# This config uses the MiniMessage format for all text.
+# You can find a viewer for it here: https://webui.advntr.dev/
+# ------------------------------------------------------------------
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# AI Integration Settings (Optional)
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ai-settings:
+  # Enable this to use an AI to filter out spam, troll, or invalid reports.
+  enabled: false
+
+  # The AI provider to use. Supported values: "openai", "gemini" - this has to be correct or it won't work!
+  provider: "openai"
+
+  # Your API key for the selected AI provider.
+  api-key: "YOUR_API_KEY_HERE"
+
+  # The prompt sent to the AI. You can customize this to fit your server's rules.
+  # Placeholders: %reason%, %reporter%, %reported%
+  prompt: "You are a Minecraft server moderator. A player named %reporter% has reported %reported% for the following reason: '%reason%'. Please determine if this report is likely to be valid, spam, or a troll. A valid report should clearly describe a rule violation. Respond with only one word: VALID, SPAM, or TROLL. If the report is unclear, assume it is VALID."
+
+  # The message sent to the player if their report is rejected by the AI.
+  rejection-message: "<red>Your report was automatically rejected as it appeared to be spam or invalid. Please provide a clear, detailed reason when reporting."
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Discord Integration Settings
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+discord-webhook:
+  # Paste your Discord Webhook URL here. Reports will be sent to this channel.
+  url: "WEBHOOK_URL_HERE"
+
+  # Customize the appearance of the webhook bot.
+  username: "Server Reports"
+  avatar-url: "https://i.imgur.com/tS3zZ1B.png"
+
+  # Settings for the rich embed message sent to Discord.
+  embed:
+    # The color of the vertical bar on the left of the embed (use decimal format).
+    # Online color picker: https://www.mathsisfun.com/hexadecimal-decimal-colors.html
+    color: 16734296 # A nice gold color
+
+    # You can customize the titles for each section of the embed.
+    title: "New Player Report"
+    reporter-field-name: "Reported By"
+    reported-player-field-name: "Reported Player"
+    reason-field-name: "Reason"
+    proof-field-name: "Proof"
+    location-field-name: "Location"
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# In-Game Staff Alerts
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+staff-alerts:
+  enabled: true
+
+  # The message broadcast to online staff.
+  # Placeholders: %reporter%, %reported%, %reason%
+  message: "<gradient:#ff5555:#ffaa00>[Alert] <white>%reporter% <gray>reported <white>%reported% <gray>for: <yellow>%reason%"
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# GUI Customization
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+gui-settings:
+  # --- Active Reports GUI (/reports) ---
+  reports-list-title: "<gradient:#ff5555:#ffaa00><bold>Active Reports"
+  report-item-name: "<yellow>Report for: <white>%player%"
+  report-item-lore:
+    - "<gray>Reported by: <white>%reporter%"
+    - "<gray>Reason: <white>%reason%"
+    - "<gray>Location: <white>%location%"
+    - "<gray>Date: <white>%date%"
+    - ""
+    - "<green><bold>Click to handle report"
+  no-reports-item-material: "BARRIER"
+  no-reports-item-name: "<red>No Active Reports"
+  no-reports-item-lore:
+    - "<gray>It looks like the server is clean!"
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# General Messages
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+messages:
+  prefix: "<gradient:#00AEEF:#A200FF>> </gradient>"
+  # --- General Command Messages ---
+  must-be-player: "<red>This command can only be run by a player."
+  config-reloaded: "<green>EasyReport configuration has been successfully reloaded."
+  unknown-command: "<red>Unknown command. Use /easyreport help for assistance."
+
+  # --- /report Command ---
+  report-usage: "<red>Usage: /report <player> <reason...>"
+  already-reporting: "<red>You are already in the process of filing a report."
+  player-not-found: "<red>Player '%player%' has never played on this server."
+  cannot-report-self: "<red>You cannot report yourself."
+  report-submitted: "<green>Thank you, your report has been submitted for review."
+  report-handled-message: "<green>Your report for <white>%player% <green>has been handled. Thank you for your contribution!"
+
+  # --- Report Creation Process ---
+  prompt-for-proof: "<gold>Please provide proof (e.g., a link to a video/screenshot) in chat."
+  prompt-no-proof-option: "<gold>Type <yellow>'none' <gold>if you have no proof to provide."
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Miscellaneous
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# The maximum number of reports to keep in memory.
+max-reports: 50
